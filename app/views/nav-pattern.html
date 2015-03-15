@@ -1,0 +1,18 @@
+<fa-app style="width:100%; height: 500px">
+
+  <!-- Menu Icon -->
+    <fa-surface
+        fa-pipe-to="eventHandler"
+        fa-click="openMenu()">
+      <div class="menu-icon"></div>
+    </fa-surface>
+
+  <fa-modifier fa-index="$index" ng-repeat="item in menuItems track by item._id"
+               fa-translate="[item.transX.get(), item.transY.get(), 1]"
+               fa-animate-enter="menuItemEnter(item)" fa-animate-leave="menuItemLeave(item)">
+    <fa-surface fa-pipe-to="eventHandler" fa-click="openMenuItem(item)">
+      <div class="menu-item"></div>
+    </fa-surface>
+  </fa-modifier>
+
+</fa-app>
