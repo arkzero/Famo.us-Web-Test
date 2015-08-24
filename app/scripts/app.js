@@ -8,16 +8,51 @@
     function ($stateProvider, $urlRouterProvider) {
 
       // Redirect
-      $urlRouterProvider.otherwise('/nav-pattern');
+      $urlRouterProvider.otherwise('/drag-test');
 
       $stateProvider
-        .state('nav-pattern', {
-          url: '/nav-pattern',
-          templateUrl: '/views/nav-pattern.html',
-          controller: 'NavPatternCtrl'
-        });
+          .state('page', {
+            url: '',
+            abstract: true,
+            views: {
+              '@': {
+                templateUrl: '/views/parent.html'
+              },
+              'navPattern@page': {
+                templateUrl: '/views/nav-pattern.html',
+                controller: 'NavPatternCtrl'
+              }
+            }
+          })
+          .state('page.drag', {
+            url: '/drag-test',
+            views: {
+              'content@page': {
+                templateUrl: '/views/drag-test.html',
+                controller: 'DragTestCtrl'
+              }
+            }
+          })
+          .state('page.board', {
+            url: '/board-test',
+            views: {
+              'content@page': {
+                templateUrl: '/views/board-test.html',
+                controller: 'BoardTestCtrl'
+              }
+            }
+          })
+          .state('page.taskBoard', {
+            url: '/task-board',
+            views: {
+              'content@page': {
+                templateUrl: '/views/task-board.html',
+                controller: 'TaskBoardCtrl'
+              }
+            }
+          });
 
     }
-  ])
+  ]);
 
 }(angular));
